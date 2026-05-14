@@ -32,6 +32,14 @@ export default function Home() {
       href: null,
       cta: "Coming Soon",
     },
+    {
+      emoji: "💬",
+      name: "ReplyChecker",
+      type: "Web",
+      description: "AI text and vibe checker. Don't send regret.",
+      href: null,
+      cta: "Coming Soon",
+    },
   ];
 
   return (
