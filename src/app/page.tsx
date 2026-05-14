@@ -21,7 +21,7 @@ export default function Home() {
       name: "Checkbook",
       type: "iOS",
       description: "A modern, private ledger app.",
-      href: "https://apps.apple.com",
+      href: "https://apps.apple.com/us/app/checkbook-by-mckittrick-llc/id6762422098",
       cta: "App Store",
     },
     {
