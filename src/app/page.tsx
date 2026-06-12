@@ -21,7 +21,7 @@ export default function Home() {
       type: "Web",
       description: "Hidden anime worth your time. Find what to watch next, see where it streams.",
       links: [
-        { label: "Visit", href: "https://animegems.com", kind: "site" },
+        { label: "animegems.com", href: "https://animegems.com", kind: "site" },
         { label: "@anime__gems", href: "https://www.instagram.com/anime__gems", kind: "ig" },
       ],
     },
@@ -31,7 +31,7 @@ export default function Home() {
       type: "Web",
       description: "AI-powered pet food safety checker. Snap a label, get an answer.",
       links: [
-        { label: "Visit", href: "https://cantheyhaveit.com", kind: "site" },
+        { label: "cantheyhaveit.com", href: "https://cantheyhaveit.com", kind: "site" },
       ],
     },
     {
