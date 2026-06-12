@@ -59,6 +59,16 @@ export default function Home() {
       ],
     },
     {
+      emoji: "🌦",
+      name: "PokéWeather",
+      type: "Web",
+      description: "Real-world weather, translated into type boosts. See what's boosted now — and when to head out for what.",
+      links: [
+        { label: "pokeweather.com", href: "https://pokeweather.com", kind: "site" },
+        { label: "@poke_weather", href: "https://www.instagram.com/poke_weather", kind: "ig" },
+      ],
+    },
+    {
       emoji: "💬",
       name: "ReplyChecker",
       type: "Web",
