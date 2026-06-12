@@ -1,44 +1,67 @@
+type ProjectLink = {
+  label: string;
+  href: string;
+  kind: "site" | "app" | "ig" | "tiktok";
+};
+
+type Project = {
+  emoji: string;
+  name: string;
+  type: string;
+  description: string;
+  links: ProjectLink[];
+  comingSoon?: boolean;
+};
+
 export default function Home() {
-  const projects = [
+  const projects: Project[] = [
     {
       emoji: "💎",
       name: "AnimeGems",
       type: "Web",
-      description: "Discover hidden anime gems.",
-      href: "https://animegems.com",
-      cta: "Visit Site",
+      description: "Hidden anime worth your time. Find what to watch next, see where it streams.",
+      links: [
+        { label: "Visit", href: "https://animegems.com", kind: "site" },
+        { label: "@anime__gems", href: "https://www.instagram.com/anime__gems", kind: "ig" },
+      ],
     },
     {
       emoji: "🐾",
       name: "Can They Have It?",
       type: "Web",
-      description: "AI-powered pet food safety checker.",
-      href: "https://cantheyhaveit.com",
-      cta: "Visit Site",
+      description: "AI-powered pet food safety checker. Snap a label, get an answer.",
+      links: [
+        { label: "Visit", href: "https://cantheyhaveit.com", kind: "site" },
+      ],
     },
     {
       emoji: "📓",
       name: "Checkbook",
       type: "iOS",
-      description: "A modern, private ledger app.",
-      href: "https://apps.apple.com/us/app/checkbook-by-mckittrick-llc/id6762422098",
-      cta: "App Store",
+      description: "A modern, private ledger. Track money like it's 1995, on hardware from 2025.",
+      links: [
+        { label: "App Store", href: "https://apps.apple.com/us/app/checkbook-by-mckittrick-llc/id6762422098", kind: "app" },
+        { label: "@checkbook.app", href: "https://www.instagram.com/checkbook.app", kind: "ig" },
+        { label: "TikTok", href: "https://www.tiktok.com/@checkbook.app", kind: "tiktok" },
+      ],
     },
     {
       emoji: "⚔️",
       name: "Clashboard",
-      type: "iOS",
-      description: "Clash of Clans & Royale dashboard.",
-      href: null,
-      cta: "Coming Soon",
+      type: "Web · iOS coming soon",
+      description: "Live war + river race accountability for Clash of Clans & Clash Royale. Stop chasing your clan.",
+      links: [
+        { label: "clashboard.gg", href: "https://clashboard.gg", kind: "site" },
+        { label: "@clashboardapp", href: "https://www.instagram.com/clashboardapp", kind: "ig" },
+      ],
     },
     {
       emoji: "💬",
       name: "ReplyChecker",
       type: "Web",
       description: "AI text and vibe checker. Don't send regret.",
-      href: null,
-      cta: "Coming Soon",
+      links: [],
+      comingSoon: true,
     },
   ];
 
@@ -77,19 +100,29 @@ export default function Home() {
               <p className="text-gray-400 text-sm leading-relaxed flex-1">
                 {p.description}
               </p>
-              {p.href ? (
-                <a
-                  href={p.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-sm font-medium text-indigo-400 hover:text-indigo-300 transition-colors"
-                >
-                  {p.cta} →
-                </a>
-              ) : (
+              {p.comingSoon ? (
                 <span className="text-sm font-medium text-gray-600">
-                  {p.cta}
+                  Coming Soon
                 </span>
+              ) : (
+                <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm">
+                  {p.links.map((l) => (
+                    <a
+                      key={l.href}
+                      href={l.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={
+                        l.kind === "site" || l.kind === "app"
+                          ? "inline-flex items-center gap-1 font-medium text-indigo-400 hover:text-indigo-300 transition-colors"
+                          : "inline-flex items-center gap-1 text-gray-500 hover:text-white transition-colors"
+                      }
+                    >
+                      {linkIcon(l.kind)}
+                      <span>{l.label}</span>
+                    </a>
+                  ))}
+                </div>
               )}
             </div>
           ))}
@@ -135,5 +168,40 @@ export default function Home() {
         </a>
       </footer>
     </main>
+  );
+}
+
+function linkIcon(kind: "site" | "app" | "ig" | "tiktok") {
+  const cls = "shrink-0";
+  if (kind === "site") {
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={cls}>
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="2" y1="12" x2="22" y2="12"/>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+      </svg>
+    );
+  }
+  if (kind === "app") {
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className={cls}>
+        <path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.5-3.24 0-1.44.62-2.2.44-3.06-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+      </svg>
+    );
+  }
+  if (kind === "ig") {
+    return (
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={cls}>
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+      </svg>
+    );
+  }
+  // tiktok
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className={cls}>
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V8.78a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.84-.21z"/>
+    </svg>
   );
 }
