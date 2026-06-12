@@ -23,6 +23,7 @@ export default function Home() {
       links: [
         { label: "animegems.com", href: "https://animegems.com", kind: "site" },
         { label: "@anime__gems", href: "https://www.instagram.com/anime__gems", kind: "ig" },
+        { label: "TikTok", href: "https://www.tiktok.com/@anime__gems", kind: "tiktok" },
       ],
     },
     {
@@ -32,6 +33,8 @@ export default function Home() {
       description: "AI-powered pet food safety checker. Snap a label, get an answer.",
       links: [
         { label: "cantheyhaveit.com", href: "https://cantheyhaveit.com", kind: "site" },
+        { label: "@cantheyhaveit", href: "https://www.instagram.com/cantheyhaveit", kind: "ig" },
+        { label: "TikTok", href: "https://www.tiktok.com/@cantheyhaveit", kind: "tiktok" },
       ],
     },
     {
