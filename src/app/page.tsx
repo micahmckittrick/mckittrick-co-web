@@ -69,6 +69,14 @@ export default function Home() {
       ],
     },
     {
+      emoji: "🧸",
+      name: "NubblShop",
+      type: "Shop",
+      description: "Fleece fidget strips and sensory comfort goods. Designed for BFRB, ADHD, and anyone whose hands like to stay busy.",
+      links: [],
+      comingSoon: true,
+    },
+    {
       emoji: "💬",
       name: "ReplyChecker",
       type: "Web",
